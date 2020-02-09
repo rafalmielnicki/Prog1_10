@@ -22,14 +22,10 @@ public class LeagueTestTeam {
         footballTeam3.setPoints(15);
         footballTeam4.setPoints(8);
 
-        volleyballTeam1.setPoints(10);
-        volleyballTeam1.setName("Asseco Resovia");
-        volleyballTeam2.setPoints(12);
-        volleyballTeam2.setName("Skra Belchatow");
-        volleyballTeam3.setPoints(15);
-        volleyballTeam3.setName("Zaksa");
-        volleyballTeam4.setPoints(8);
-        volleyballTeam4.setName("Jastrzebski Wegiel");
+        volleyballTeam1.setPoints(10); volleyballTeam1.setName("Asseco Resovia");
+        volleyballTeam2.setPoints(12); volleyballTeam2.setName("Skra Belchatow");
+        volleyballTeam3.setPoints(15); volleyballTeam3.setName("Zaksa");
+        volleyballTeam4.setPoints(8); volleyballTeam4.setName("Jastrzebski Wegiel");
 
         LeagueTeam<FootballTeam> footballLeague = new LeagueTeam("Primiera Division");
         LeagueTeam<VolleyballTeam> volleyballLeague = new LeagueTeam("Plus Liga");
@@ -114,7 +110,7 @@ public class LeagueTestTeam {
                 .collect(Collectors.toList());
 
         Set<String> teamNamesSet = teamConcat2.stream()
-                .map((Team::retriveName))
+                .map(Team::retriveName)
                 .collect(Collectors.toSet());
         System.out.println("===ListPrint===");
         teamNamesList.stream().forEach(System.out::println);
@@ -161,10 +157,12 @@ public class LeagueTestTeam {
                 .max()
                 .orElse(new Integer(0));
         System.out.println("max : " + max);
+
         Team teamExpected = footballLeague.getTeams().stream()
                 .max(Comparator.comparing(Team::getPoints))
                 .orElseThrow(NoSuchElementException::new);
         System.out.println("max from team : " + teamExpected.getPoints());
+
         Integer max2 = footballLeague.getTeams().stream()
                 .max(Comparator.comparing(Team::getPoints))
                 .map(Team::getPoints)

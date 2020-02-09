@@ -3,7 +3,6 @@ package sda.prog1_10.team;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class LeagueTeam<T extends Team> {
 
@@ -49,7 +48,7 @@ public class LeagueTeam<T extends Team> {
         Collections.sort(teams);
         System.out.println(name + " table:");
         teams.stream().forEach(x -> System.out.println(
-                x.getPoints() + " " + x.getPoints()
+                x.getName() + " " + x.getPoints()
                 )
         );
 

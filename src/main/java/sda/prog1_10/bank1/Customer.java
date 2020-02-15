@@ -57,7 +57,7 @@ public class Customer {
     // do listy klientów
     @Override
     public String toString() {
-        return "name='" + name + '\'' +
-                ", surname='" + surname;
+        return "name=" + name + ' ' +
+                ", surname=" + surname;
     }
 }

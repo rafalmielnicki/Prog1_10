@@ -26,7 +26,7 @@ public class Main {
             }
         }.start();
 
-        runnableSample = new Thread(new RunnableSample() {
+        runnableSample = new Thread(new RunnableSample() {//klasa anonimowa
             @Override
             public void run() {
                 System.out.println(ANSI_RED + " overridden RunnableSample");

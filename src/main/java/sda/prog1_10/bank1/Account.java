@@ -33,6 +33,10 @@ public class Account {
         return accountNumber;
     }
 
+    public void setAccountNumber(String accountNumber) {
+        this.accountNumber = accountNumber;
+    }
+
     public void deposit(int amount) {
         this.balance += amount;
         System.out.println("Wpłata na rachunek " + this.accountNumber
@@ -65,4 +69,8 @@ public class Account {
         return Objects.hash(accountNumber);
     }
 
+    @Override
+    public String toString() {
+        return "accountNumber=" + accountNumber;
+    }
 }

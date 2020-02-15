@@ -31,7 +31,7 @@ public class ReadWriteFile {
                 s.getIndex() + " " + s.getData1() + " " + s.getData2()
         ));
 
-        //offtopic
+        //offtopic varargs
         System.out.println("varargs example");
         System.out.println(readWriteFile.varargsSum(3,10));
         System.out.println(readWriteFile.varargsSum(3));
@@ -57,6 +57,7 @@ public class ReadWriteFile {
 
     public boolean writeToFileWithResources() {
         final String lineDelimiter = "\n";
+        //try-with-resources
         try (FileWriter fileWriter = new FileWriter("AnotherFile.txt")) {
             fileWriter.write("First line " + lineDelimiter);
             fileWriter.write("Second line ");
@@ -129,7 +130,7 @@ public class ReadWriteFile {
 
     }
 
-    //offtopic
+    //offtopic varargs
     private int varargsSum(int a, int...b) {
         int suma = a;
         for(int i = 0; i < b.length; i++) {

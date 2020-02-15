@@ -60,7 +60,7 @@ class Writer implements Runnable {
             message.write(messages[i]);
             try {
                 Thread.sleep(random.nextInt(4000)); //czekamy jakiś okres czasu,
-                // ale nie więcej niż 2000ms
+                // ale nie więcej niż 4000ms
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

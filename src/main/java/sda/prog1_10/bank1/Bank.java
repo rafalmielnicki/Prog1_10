@@ -95,6 +95,7 @@ public class Bank {
                 customer.setAccounts(accounts);
                 System.out.println("Wpłata " + amount + " na  rachunek "
                 + account + " zaksięgowana.");
+                return true;
             }
         }
         return customerNotFound(customer);
@@ -119,6 +120,32 @@ public class Bank {
             return false;
         }
         return customerNotFound(customer);
+    }
+
+    public boolean deleteAccount(Customer customer, Account account) {
+        if(checkCustomerOnList(customer)) {
+            List<Account> accounts = customer.getAccounts();
+            if(accounts.contains(account)) {
+                return removeAccountIfBalanceZero(account, accounts);
+            }
+            return accountNotFound(account);
+        }
+        return customerNotFound(customer);
+    }
+
+    private boolean removeAccountIfBalanceZero(Account account, List<Account> accounts) {
+        if (account.getBalance() == 0) {
+            accounts.remove(account);
+            System.out.println("Rachunek " + account + " usunięty");
+            return true;
+    }
+        System.out.println("Na rachunku " + account + " saldo niezerowe, nie można usunąć");
+        return false;
+    }
+
+    private boolean accountNotFound(Account account) {
+        System.out.println("Nie znaleziono konta " + account);
+        return false;
     }
 
     public void printAccountList(Customer customer, boolean printBalance) {
@@ -147,6 +174,20 @@ public class Bank {
 
     private boolean checkCustomerOnList(Customer customer) {
         return customers.contains(customer);
+    }
+
+    public void printAllBankAccounts() {
+        customers.stream().forEach(
+                c -> {
+                    List<Account> customerAccounts = c.getAccounts();
+                    customerAccounts.forEach(System.out::println);
+                }
+        );
+        System.out.println("=============================");
+        customers.stream()
+                .map(Customer::getAccounts)//dla każdego klienta pobieramy jego konta, strumień list kont
+                .flatMap(x -> x.stream())//z strumienia struktur lista robi strumień pojedynczych elementów listy
+                .forEach(System.out::println);
     }
 
 }
